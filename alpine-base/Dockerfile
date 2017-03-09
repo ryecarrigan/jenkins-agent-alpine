@@ -2,8 +2,7 @@
 FROM openjdk:8-alpine
 
 # Set up variables
-ARG AGENT_DIR="/usr/share/jenkins"
-ENV AGENT_JAR="${AGENT_DIR}/jenkins-agent.jar" VERSION=3.7
+ENV AGENT_JAR="/usr/share/jenkins/jenkins-agent.jar" REMOTING_VER=3.7
 
 # Execute all commands in one go
 RUN \
@@ -16,8 +15,8 @@ RUN \
 
     # Acquire the Jenkins remoting JAR and place it on the target
     && curl --create-dirs -sSLo ${AGENT_JAR} \
-        https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${VERSION}/remoting-${VERSION}.jar \
-    && chmod 755 ${AGENT_DIR} \
+        https://repo.jenkins-ci.org/public/org/jenkins-ci/main/remoting/${REMOTING_VER}/remoting-${REMOTING_VER}.jar \
+    && chmod 755 /usr/share/jenkins \
     && chmod 644 ${AGENT_JAR} \
 
     # Create a Jenkins user

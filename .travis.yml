@@ -1,0 +1,7 @@
+language: java
+sudo: required
+services:
+  - docker
+
+script:
+- docker-compose -f alpine-base/docker-compose.yml build
