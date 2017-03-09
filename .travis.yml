@@ -4,4 +4,4 @@ services:
   - docker
 
 script:
-- docker-compose -f alpine-base/docker-compose.yml build
+- docker-compose build
